@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import com.xayast.automation.accountDashboard.AccountDashboard;
+
 public class AccountCreateAddInfo {
 	WebDriver dr;
 	
@@ -118,7 +120,47 @@ public class AccountCreateAddInfo {
 		dateDropDown.deselectByIndex(y);
 	}
 
-	public void enterNameForAddress(String fNme){
+	public void enterFNameForAddress(String fNme){
 		firstNameAddress.sendKeys(fNme);
 	}
+	
+	public void enterLNameAddress(String lNme) {
+		lastNameAddress.sendKeys(lNme);
+	}
+	
+	public void enterCompanyName(String cNme) {
+		company.sendKeys(cNme);
+	}
+	
+	public void enterCityName(String cityNme) {
+		city.sendKeys(cityNme);
+	}
+	
+	public void selectState(String stateNme) {
+		//Georgia
+		Select states = new Select(stateDropDown);
+		states.selectByVisibleText(stateNme);
+	}
+	
+	public void selectCountry(String country) {
+		//United States
+		Select countryD = new Select(countryDropDown);
+		countryD.selectByValue("United States");
+	}
+	
+	public void enterMobileNo(CharSequence[] mobNo) {
+		mobileNo.sendKeys(mobNo);
+	}
+	
+	public void enterAddressType(String addType) {
+		addressAlias.clear();
+		addressAlias.sendKeys(addType);
+	}
+	
+	public AccountDashboard clickOnRegisterButton() {
+		submitAccountButton.click();
+		return new AccountDashboard(dr);
+	}
+	
+	
 }
